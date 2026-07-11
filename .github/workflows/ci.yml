@@ -1,0 +1,25 @@
+name: Zevq AI CI
+on: [push, pull_request]
+jobs:
+  ci:
+    name: Build, Lint, Test, Self-Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Check formatting (rustfmt)
+        run: cargo fmt --all -- --check
+      - name: Clippy - deny warnings (strict)
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Run tests (deterministic)
+        run: cargo test --all-features --verbose
+      - name: Build release (production)
+        run: cargo build --release --verbose
+      - name: DASE Engine self-test
+        run: ./target/release/zevq-api --self-test

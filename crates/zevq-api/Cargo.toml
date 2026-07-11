@@ -1,0 +1,22 @@
+[package]
+name = "zevq-api"
+version = "0.1.0"
+edition = "2021"
+[[bin]]
+name = "zevq-api"
+path = "src/main.rs"
+[dependencies]
+zevq-core = { path = "../zevq-core" }
+axum = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+rand = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
