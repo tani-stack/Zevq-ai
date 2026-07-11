@@ -13,7 +13,14 @@ impl TrapGeneratorImpl for NullSafetyGenerator {
 
     fn generate(&mut self, seed: u64, nonce: u64) -> Trap {
         let mut rng = StdRng::seed_from_u64(seed ^ nonce ^ 0x1234);
-        let fields = ["email", "phone", "profile.avatar_url", "user.name", "meta.id", "payload.data"];
+        let fields = [
+            "email",
+            "phone",
+            "profile.avatar_url",
+            "user.name",
+            "meta.id",
+            "payload.data",
+        ];
         let field = fields[rng.gen_range(0..fields.len())];
         let id = rng.gen_range(100..999);
         let code = format!("let d_{id} = {field}.split('@').collect::<Vec<_>>()[1];");

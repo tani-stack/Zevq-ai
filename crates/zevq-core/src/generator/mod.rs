@@ -36,8 +36,7 @@ impl DynamicTrapEngine {
     }
 
     fn register_defaults(&mut self) {
-        self.generators
-            .push(Box::new(sql_traps::SqlLogicGenerator));
+        self.generators.push(Box::new(sql_traps::SqlLogicGenerator));
         self.generators
             .push(Box::new(sql_traps::JoinComplexityGenerator));
         self.generators
