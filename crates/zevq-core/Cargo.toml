@@ -1,7 +1,8 @@
 [package]
 name = "zevq-core"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
 description = "Zevq AI DASE deterministic core - no hardcoded limits"
 [dependencies]
 serde = { workspace = true }

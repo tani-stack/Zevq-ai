@@ -2,6 +2,13 @@
 members = ["crates/zevq-core", "crates/zevq-api"]
 resolver = "2"
 
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Zevq AI Team"]
+license = "MIT"
+publish = false
+
 [workspace.dependencies]
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
